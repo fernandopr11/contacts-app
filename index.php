@@ -1,10 +1,8 @@
 <?php
 
-if (file_exists("contacts.json")) {
-  $contacts = json_decode(file_get_contents("contacts.json"), true);
-} else {
-  $contacts = [];
-}
+require "database.php";
+$contacts = $conn->prepare("SELECT  * FROM contacts");
+$contacts->execute();
 
 ?>
 
@@ -54,18 +52,27 @@ if (file_exists("contacts.json")) {
     <div class="container pt-4 p-3">
       <div class="row">
 
-        <?php if (count($contacts) == 0) : ?>
+        <?php if ($contacts->rowCount() == 0) : ?>
+
+          <?php $statement  = $conn->prepare("ALTER TABLE contacts AUTO_INCREMENT = 1");
+
+          $statement->execute();
+
+          ?>
+
           <div class="col-md-4 mx-auto">
             <div class="card card-body text-center">
               <p>No contacts saved yet</p>
               <a href="add.php">Add One!</a>
             </div>
           </div>
+
         <?php endif ?>
         <?php foreach ($contacts as $contact) : ?>
           <div class="col-md-4 mb-3">
             <div class="card text-center">
               <div class="card-body">
+                <h3 class="card-title text-capitalize"><?= $contact["id"] ?></h3>
                 <h3 class="card-title text-capitalize"><?= $contact["name"] ?></h3>
                 <p class="m-2"><?= $contact["phone_number"] ?></p>
                 <a href="#" class="btn btn-secondary mb-2">Edit Contact</a>
