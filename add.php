@@ -51,7 +51,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand font-weight-bold" href="#">
-        <img class="mr-2" src="./static/img/logo.png" />
+        <img class="mr-2" src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png" />
         ContactsApp
       </a>
       <button
