@@ -4,6 +4,19 @@ require "database.php";
 $contacts = $conn->prepare("SELECT  * FROM contacts");
 $contacts->execute();
 
+
+try {
+
+  //Insert IP user in table
+  $ipUser = $_SERVER['REMOTE_ADDR'];
+  $statement = $conn->prepare("INSERT INTO user_conection (ip) VALUES ('$ipUser');");
+  $statement->execute();
+  
+} catch (PDOException $e) {
+
+  echo ("Error is " . $e->getMessage());
+}
+
 ?>
 
 
