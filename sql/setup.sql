@@ -10,6 +10,9 @@ CREATE TABLE contacts (
   phone_number VARCHAR(255)
 );
 
-INSERT INTO
-  contacts (name, phone_number)
-VALUES ("Fernando", "0993601086")
+CREATE TABLE user_conection(
+
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ ip VARCHAR(255)
+
+);
