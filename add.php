@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo ("El error es: " . $th->getMessage());
     }
 
-    header("Location: index.php");
+    header("Location: home.php");
   }
 }
 
