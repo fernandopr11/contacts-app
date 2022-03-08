@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 
               <div class="col-md-6">
-                <input id="email" type="text" class="form-control" name="email" required autocomplete="email" autofocus>
+                <input id="email" type="text" class="form-control" name="email" required autocomplete="email" autofocus value="<?php if (isset($_POST['email'])) echo($_POST['email']) ?>">
               </div>
             </div>
 
