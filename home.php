@@ -4,6 +4,13 @@ require "database.php";
 $contacts = $conn->prepare("SELECT  * FROM contacts");
 $contacts->execute();
 
+session_start();
+if (!isset($_SESSION["user"])) {
+
+  header("Location: login.php");
+  return;
+}
+
 
 try {
 
