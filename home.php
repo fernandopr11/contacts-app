@@ -1,10 +1,19 @@
 <?php
 
 require "database.php";
-$contacts = $conn->prepare("SELECT  * FROM contacts");
-$contacts->execute();
 
 session_start();
+
+
+try {
+
+  $contacts = $conn->query("SELECT  * FROM contacts WHERE user_id = {$_SESSION['user']['id']}");
+
+} catch (PDOException $e) {
+
+  echo ("The error is" . $e);
+}
+
 if (!isset($_SESSION["user"])) {
 
   header("Location: login.php");

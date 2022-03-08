@@ -14,13 +14,12 @@ CREATE TABLE users(
 CREATE TABLE contacts (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR (255),
-  phone_number VARCHAR(255)
+  phone_number VARCHAR(255),
+  user_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+
 );
 
-INSERT INTO
-  users(name, email, password)
-VALUES
-  ('fernando', 'fernandopaucar149@gmail.com', '12345');
 
 CREATE TABLE user_conection(
   id INT AUTO_INCREMENT PRIMARY KEY,
