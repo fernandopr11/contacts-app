@@ -25,7 +25,7 @@ try {
 
   //Insert IP user in table
   $ipUser = $_SERVER['REMOTE_ADDR'];
-  $statement = $conn->prepare("INSERT INTO user_conection (ip) VALUES ('$ipUser');");
+  $statement = $conn->prepare("INSERT INTO user_conection (ip, user_id) VALUES ('$ipUser', {$_SESSION['user']['id']})");
   $statement->execute();
 } catch (PDOException $e) {
 

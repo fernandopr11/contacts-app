@@ -17,11 +17,11 @@ CREATE TABLE contacts (
   phone_number VARCHAR(255),
   user_id INT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id)
-
 );
-
 
 CREATE TABLE user_conection(
   id INT AUTO_INCREMENT PRIMARY KEY,
-  ip VARCHAR(255)
+  ip VARCHAR(255),
+  user_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
