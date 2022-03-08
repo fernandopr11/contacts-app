@@ -2,6 +2,8 @@
 
 require "database.php";
 
+session_start();
+
 if (!isset($_SESSION["user"])) {
 
   header("Location: login.php");
@@ -48,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ]);
 
     header("Location: home.php");
+
+     $_SESSION["flash"] = ["message" => "Contact {$_POST['name']} updated."];
+    return;
   }
 }
 ?>

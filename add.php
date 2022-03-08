@@ -1,47 +1,36 @@
 <?php
 
-require "database.php";
-session_start();
+  require "database.php";
 
-if (!isset($_SESSION["user"])) {
+  session_start();
 
-  header("Location: login.php");
-  return;
-}
+  if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    return;
+  }
 
-$error = null;
+  $error = null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"]) || empty($_POST["phone_number"])) {
+      $error = "Please fill all the fields.";
+    } else if (strlen($_POST["phone_number"]) < 9) {
+      $error = "Phone number must be at least 9 characters.";
+    } else {
+      $name = $_POST["name"];
+      $phoneNumber = $_POST["phone_number"];
 
-
-  if (empty($_POST["name"]) || empty($_POST["phone_number"])) {
-
-    $error = "Please fill all the fields";
-  } else if (strlen($_POST["phone_number"]) < 9) {
-
-    $error = "Phone number must be at least 9 characters.";
-  } else {
-
-    $name = $_POST["name"];
-    $phoneNumber = $_POST["phone_number"];
-
-    try {
-
-      $statement = $conn->prepare("INSERT INTO contacts (user_id, name, phone_number) VALUES (:user_id, :name, :phone_number)");
-      $statement->bindParam(":user_id", $_SESSION['user']['id']);
+      $statement = $conn->prepare("INSERT INTO contacts (user_id, name, phone_number) VALUES ({$_SESSION['user']['id']}, :name, :phone_number)");
       $statement->bindParam(":name", $_POST["name"]);
       $statement->bindParam(":phone_number", $_POST["phone_number"]);
       $statement->execute();
-    } catch (PDOException $th) {
 
-      echo ("El error es: " . $th->getMessage());
+      $_SESSION["flash"] = ["message" => "Contact {$_POST['name']} added."];
+
+      header("Location: home.php");
+      return;
     }
-
-    header("Location: home.php");
   }
-}
-
-
 ?>
 
 <?php require "partials/header.php" ?>
