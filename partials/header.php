@@ -13,6 +13,7 @@
   <!-- Static Content -->
   <link rel="stylesheet" href="./static/css/index.css" />
 
+  <link rel="shorcut icon" href="./static/img/contact.png">
 
   <?php $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); ?>
 

@@ -8,7 +8,7 @@ session_start();
 try {
 
   $contacts = $conn->query("SELECT  * FROM contacts WHERE user_id = {$_SESSION['user']['id']}");
-
+  
 } catch (PDOException $e) {
 
   echo ("The error is" . $e);
@@ -67,6 +67,9 @@ try {
         </div>
       </div>
     <?php endforeach ?>
+    <div class="d-flex justify-content-center">
+      <a href="pdf.php" class="btn btn-primary mb-2 mt-5">Export Contacts</a>
+    </div>
 
   </div>
 </div>
