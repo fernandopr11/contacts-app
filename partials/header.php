@@ -17,10 +17,8 @@
 
   <?php $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); ?>
 
-  <?php if ($uri == "/curso-php/" || $uri == "/curso-php/index.php") : ?>
-
+  <?php if ($uri == "/contacts-app/" || $uri == "/contacts-app/index.php"): ?>
     <script defer src="./static/js/welcome.js"></script>
-
   <?php endif ?>
 
   <title>Contacts App</title>
