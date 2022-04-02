@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $database = "contacts_app";
-$user = "fernando";
+$user = "root";
 $password = "0701951063";
 
 try {
