@@ -14,6 +14,8 @@
 
 ## Local Setup
 
+Execute this command in root dir
+
 Run app in docker container
 
 ```bash
